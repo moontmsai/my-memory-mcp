@@ -79,7 +79,7 @@ npm run clean
 
 **예시:**
 ```typescript
-create_entity({ type: "Person", name: "moontmai" })
+create_entity({ type: "Person", name: "moontmsai" })
 create_entity({ type: "Place", name: "서울" })
 ```
 
