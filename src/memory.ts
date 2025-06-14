@@ -37,15 +37,16 @@ export class MemorySystem {
     timestamp?: number;
   }): Promise<Observation> {
     const id = `obs_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-    const timestamp = data.timestamp || Math.floor(Date.now() / 1000);
-    const importanceScore = data.importanceScore || 50;
+    const timestamp = data.timestamp ?? Math.floor(Date.now() / 1000);
+    const importanceScore = data.importanceScore ?? 50;
+    const notes = data.notes ?? '';
     
     await this.db.run(
       'INSERT INTO observations (id, entityId, type, value, notes, importanceScore, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [id, data.entityId, data.type, data.value, data.notes || '', importanceScore, timestamp]
+      [id, data.entityId, data.type, data.value, notes, importanceScore, timestamp]
     );
-    
-    return { id, notes: '', ...data, importanceScore, timestamp };
+
+    return { id, ...data, notes, importanceScore, timestamp };
   }
 
   async getObservations(filter: { entityId?: string } = {}): Promise<Observation[]> {

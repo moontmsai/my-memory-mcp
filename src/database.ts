@@ -1,5 +1,4 @@
 import Database from 'sqlite3';
-import { promisify } from 'util';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -16,7 +15,7 @@ export class DatabaseManager {
       return path.resolve(__dirname, '../data/my-memory.sqlite');
     })();
     
-    console.error('DB 경로:', dbPath);
+    console.debug('DB 경로:', dbPath);
     this.db = new Database.Database(dbPath);
     
     // WAL 모드 설정 - 커서 AI 호환성을 위해
