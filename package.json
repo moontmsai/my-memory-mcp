@@ -1,0 +1,23 @@
+{
+  "name": "my-memory-mcp",
+  "version": "1.0.0",
+  "description": "Simple memory MCP server for entities, observations, and relations",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "my-memory-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.0.0"
+  }
+}
